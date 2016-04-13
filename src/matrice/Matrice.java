@@ -6,12 +6,12 @@ import java.io.IOException;
 
 import parametrage.CSVFile;
 
-public class Matrice18 implements Matrice {
+public class Matrice {
 
 	private double [] [] matrice;
 	private int taille = 18;
 	
-	public Matrice18 () throws NumberFormatException, IOException {
+	public Matrice () throws NumberFormatException, IOException {
 		
 		matrice = new double [18][18];
 		

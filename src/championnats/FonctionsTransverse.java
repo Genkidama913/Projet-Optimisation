@@ -1,4 +1,4 @@
-package poules;
+package championnats;
 
 import java.util.ArrayList;
 
