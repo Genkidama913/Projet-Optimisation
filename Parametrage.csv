@@ -1,0 +1,8 @@
+typeChampionnat;0
+nbGen;100
+nbIndiv;500
+evaluation;2
+pourcentageDistance;30
+afficheNbmeilleuresPoules;0
+PourcentageSelection;10
+pourcentageMutation;40

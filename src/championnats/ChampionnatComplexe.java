@@ -2,15 +2,24 @@ package championnats;
 
 import java.util.Arrays;
 
+import matrice.FonctionsTransverse;
 import matrice.Matrice;
+import parametrage.Options;
 
-public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>{
+public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Championnat{
 
 	private int [] grpA1,grpA2,grpB1,grpB2;
 	private double distanceTotale = 0;
 	private int equilibreDesPoule = 0;
+	private Options opt;
+	private double noteDistance;
+	private double noteEquilibre;
+	private double noteMoyennePondereeEqDist;
 
-	public ChampionnatComplexe (int [] Eq12,Matrice mat) {
+	public ChampionnatComplexe (int [] Eq12,Matrice mat,Options o ) {
+		opt = o;
+		int equilibrea = 0;
+		int equilibreb = 0;
 		grpA1 = new int [3];  
 		grpA2 = new int [3];  
 		grpB1 = new int [3];  
@@ -56,11 +65,18 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>{
 		}
 		int z;
 		for ( z= 0; z < 3 ; z++) {
-			equilibreDesPoule = equilibreDesPoule + Integer.max(grpA1[z], grpB1[z]) - Integer.min(grpA1[z], grpB1[z]) + Integer.max(grpA2[z], grpB2[z]) - Integer.min(grpA2[z], grpB2[z]);
+			//equilibreDesPoule = equilibreDesPoule + Integer.max(grpA1[z], grpB1[z]) - Integer.min(grpA1[z], grpB1[z]) + Integer.max(grpA2[z], grpB2[z]) - Integer.min(grpA2[z], grpB2[z]);
+			equilibrea = grpA1[z] + grpA2[z] ;
+			equilibreb = grpB1[z] + grpB2[z] ;
 		}
+		equilibreDesPoule = Integer.max(equilibrea, equilibreb) - Integer.min(equilibreb, equilibreb);
+		noteDistance = getDistanceTotale() * 100 / 52000 ;
+		noteEquilibre = getEquilibreDesPoules() * 100 / 36 ;
+		noteMoyennePondereeEqDist = ( (noteDistance * opt.getPourcentageDistance()) + (noteEquilibre * (100 - opt.getPourcentageDistance()) ))/100;
 	}
 
-	public ChampionnatComplexe (Matrice mat) {
+	public ChampionnatComplexe (Matrice mat,Options o) {
+		opt = o;
 		int [] Eq12 = FonctionsTransverse.tirage(12);
 		grpA1 = new int [3];  
 		grpA2 = new int [3];  
@@ -107,10 +123,25 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>{
 		}
 		int z;
 		for ( z= 0; z < 3 ; z++) {
-			equilibreDesPoule = equilibreDesPoule + Integer.max(grpA1[z], grpB1[z]) - Integer.min(grpA1[z], grpB1[z]) + Integer.max(grpA2[z], grpB2[z]) - Integer.min(grpA2[z], grpB2[z]);
+			equilibreDesPoule = equilibreDesPoule +  ( Integer.max(grpA1[z], grpB1[z]) - Integer.min(grpA1[z], grpB1[z])  ) + ( Integer.max(grpA2[z], grpB2[z]) - Integer.min(grpA2[z], grpB2[z]) );
 		}
+		noteDistance = getDistanceTotale() * 100 / 52000 ;
+		noteEquilibre = getEquilibreDesPoules() * 100 / 36 ;
+		noteMoyennePondereeEqDist = ( (noteDistance * opt.getPourcentageDistance()) + (noteEquilibre * (100 - opt.getPourcentageDistance()) ))/100;
 	}
 
+	public double getNoteDistance() {
+		return noteDistance;
+	}
+	
+	public double getNoteEquilibre() {
+		return noteEquilibre;
+	}
+	
+	public double getNoteMoyennePondereeEqDist() {
+		return noteMoyennePondereeEqDist;
+	}
+	
 	public double getDistanceTotale() {
 		return distanceTotale;
 	}
@@ -139,6 +170,31 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>{
 		return ChampionnatComplexe;
 	}
 
+	public String toString2 () {
+		String a = "ChampionnatComplexe : [";
+		a = a + " { ( " ;
+		for ( int i = 0 ; i < 3 ; i++ ) {
+			a = a + grpA1 [i] +" " ;
+		}
+		a = a + ") ( " ;
+		for ( int i = 0 ; i < 3 ; i++ ) {
+			a = a + grpA2 [i] +" "  ;
+		}
+		a = a + ") } { ( " ;
+		for ( int i = 0 ; i < 3 ; i++ ) {
+			a = a + grpB1 [i] +" " ;
+		}
+		a = a + ") ( "  ;
+		for ( int i = 0 ; i < 3 ; i++ ) {
+			a = a + grpB2 [i] +" " ;
+		}
+		a = a + ") } ] \n"  ;
+		a = a + "\tNote Equilibre:\t"+this.getNoteEquilibre()+"\n" ;
+		a = a + "\tNote Distance:\t"+this.getNoteDistance()+"\n" ;
+		a = a + "\tMoyenne pondérée:\t" +getNoteMoyennePondereeEqDist()+" (coefDist="+opt.getPourcentageDistance()+", coefEq="+(100-opt.getPourcentageDistance())+")\n" ;
+		return a;
+	}
+	
 	public String toString () {
 		String a = "ChampionnatComplexe :\n";
 		a = a + "Poule A Groupe 1 :\t" ;
@@ -157,24 +213,43 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>{
 		for ( int i = 0 ; i < 3 ; i++ ) {
 			a = a + grpB2 [i] +" \t" ;
 		}
-		a = a + "\nEquilibre des poules :\t" + getEquilibreDesPoules()+"\n" ;
-		a = a + "Distance totale parcourue : " +getDistanceTotale()+"\nDistance moyenne par equipe parcourue : "+getDistanceMoyenne()+"\n" ;
+		a = a + "\nEquilibre des poules :\t" + getEquilibreDesPoules()+" (RAMENE SUR 100 = "+ noteEquilibre +")\n" ;
+		a = a + "Distance totale parcourue : " +getDistanceTotale()+" (RAMENE SUR 100 = "+ noteDistance +")\nDistance moyenne par equipe parcourue : "+getDistanceMoyenne()+"\n";
+		a = a + "Moyenne pondérée de l'equilibre et de la distance ramenées sur 100 : "+getNoteMoyennePondereeEqDist()+" (avec un coefiscient de "+opt.getPourcentageDistance()+" pour la distance et de "+(100-opt.getPourcentageDistance())+" pour l'equilibre) \n";
 		return a;
 	}
 
 	// l'equilibre des poules est primordiale.
+	// equilibre le moins bon = (7+8+9+10+11+12) - (1+2+3+4+5+6) = 36
+	//distance max = 52000 env
+	
+	//noteDistance;
+	//private double noteEquilibre;
+	//private double noteMoyennePondereeEqDist;
 	public int compareTo(ChampionnatComplexe o) {
-		if (this.getEquilibreDesPoules()>o.getEquilibreDesPoules()) {
-			return -1;
-		} else if (this.getEquilibreDesPoules()<o.getEquilibreDesPoules()) {
-			return 1;
-		} else {
-			if (this.getDistanceTotale() > o.getDistanceTotale()) {
-				return -1;
-			}else if (this.getDistanceTotale() < o.getDistanceTotale()) {
-				return 1;
-			}else {
+		if (opt.getEvaluation() == 0) {
+			if (o.getNoteDistance() == this.getNoteDistance()) {
 				return 0;
+			}else if (o.getNoteDistance() > this.getNoteDistance() ) {
+				return -1;
+			}else {
+				return 1;
+			}
+		}else if (opt.getEvaluation() == 1) {
+			if (o.getNoteEquilibre() == this.getNoteEquilibre()) {
+				return 0;
+			}else if (o.getNoteEquilibre() > this.getNoteEquilibre() ) {
+				return -1;
+			}else {
+				return 1;
+			}
+		} else  {
+			if (o.getNoteMoyennePondereeEqDist() == this.getNoteMoyennePondereeEqDist()) {
+				return 0;
+			}else if (o.getNoteMoyennePondereeEqDist() > this.getNoteMoyennePondereeEqDist() ) {
+				return -1;
+			}else {
+				return 1;
 			}
 		}
 	}

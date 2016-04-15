@@ -1,4 +1,4 @@
-package championnats;
+package matrice;
 
 import java.util.ArrayList;
 

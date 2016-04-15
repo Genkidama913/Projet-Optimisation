@@ -3,7 +3,6 @@ package matrice;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
 import parametrage.CSVFile;
 
 public class Matrice {
@@ -51,6 +50,9 @@ public class Matrice {
 
 	public int getTaille() {
 		return taille;
+	}
+	public double []  getTabDist(int i) {
+		return matrice [i];
 	}
 
 }

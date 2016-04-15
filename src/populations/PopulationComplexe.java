@@ -6,17 +6,18 @@ import java.util.Collections;
 import championnats.ChampionnatComplexe;
 import matrice.Matrice;
 import mutations.MutationComplexe;
+import parametrage.Options;
 
-public class PopulationComplexe {
+public class PopulationComplexe implements Population{
 	
 	private ArrayList<ChampionnatComplexe> pop;
 	private int nbIndiv;
 
-	public PopulationComplexe (int nb, Matrice mat) {
-		this.nbIndiv = nb;
+	public PopulationComplexe ( Matrice mat, Options o) {
+		this.nbIndiv = o.getNbIndiv();
 		pop = new ArrayList<ChampionnatComplexe> (); 
-		for ( int i = 0 ; i < nb ; i ++ ) {
-			pop.add(new ChampionnatComplexe (mat));
+		for ( int i = 0 ; i < nbIndiv ; i ++ ) {
+			pop.add(new ChampionnatComplexe (mat, o));
 		}
 	}
 
@@ -24,7 +25,9 @@ public class PopulationComplexe {
 		Collections.sort (pop);
 	}
 	
-	public void selectionAndMutation (int pourcentageSel,int pourcentageMut, Matrice mat){
+	public void selectionAndMutation ( Matrice mat, Options o){
+		int pourcentageSel = o.getPourcentageSelection();
+		int pourcentageMut = o.getPourcentageMutation();
 		int pourcTot = pourcentageSel + pourcentageMut,i;
 		ChampionnatComplexe n ;
 		if ( pourcTot >= 0 || pourcTot <= 100 ) {
@@ -34,11 +37,11 @@ public class PopulationComplexe {
 		int nbSel = (pourcentageSel/100) * nbIndiv; 
 		int nbMut = (pourcentageMut/100) * nbIndiv; 
 		for (i = 0; i<nbMut ; i ++) {
-			n = MutationComplexe.mutationsAleatoire(pop.get(i), mat);
+			n = MutationComplexe.mutationsAleatoire(pop.get(i), mat,o);
 			pop.set (i+nbSel,n);	
 		}
 		for (i = nbSel+nbMut; i< nbIndiv ; i ++) {
-			pop.set (i,new ChampionnatComplexe(mat));
+			pop.set (i,new ChampionnatComplexe(mat,o));
 		}
 	
 	}
