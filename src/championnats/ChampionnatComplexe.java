@@ -2,9 +2,18 @@ package championnats;
 
 import java.util.Arrays;
 
-import matrice.FonctionsTransverse;
+import matrice.FonctionsTransverses;
 import matrice.Matrice;
 import parametrage.Options;
+
+/**
+ * CampionnatComplexe est une classe qui implémente l'interface Championnat.
+ * Un championnat à 12 équipes dont les équipes sont répartis en 2 groupes de 6 et 2 sous­-groupes de 3 au sein de chaque groupe de 6.
+ * Les équipes se déplacement 2 fois chez chaque adversaire du sous­groupe, 1 fois chez chaque autre adversaires du groupe et 1 fois chez 3 des 6 adversaires de l’autre groupe.
+ * 
+ * @author Alexandre Enouf
+ * @version 1.0
+ */
 
 public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Championnat{
 
@@ -15,7 +24,14 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	private double noteDistance;
 	private double noteEquilibre;
 	private double noteMoyennePondereeEqDist;
-
+	
+	/**
+	 * Creer un championnat complexe a partir d'un tableau donné en paramètre.
+	 * @param Eq12 [12]
+	 * @param matrice des distances
+	 * @param les options du fichier de parametrage
+	 * @return Un Championnat complexe
+	 */
 	public ChampionnatComplexe (int [] Eq12,Matrice mat,Options o ) {
 		opt = o;
 		int equilibrea = 0;
@@ -37,19 +53,16 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		int a=0;
 		for ( int i = 0 ; i < 3 ; i ++ ) {
 			for ( int j = 0 ; j < 3 ; j ++ ) {
-				// deux deplacement par adversaire du groupe
 				distanceTotale += mat.getDistanceBetween(grpA1[i]-1,grpA1[j]-1)*2;
 				distanceTotale += mat.getDistanceBetween(grpA2[i]-1,grpA2[j]-1)*2;
 				distanceTotale += mat.getDistanceBetween(grpB1[i]-1,grpB1[j]-1)*2;
 				distanceTotale += mat.getDistanceBetween(grpB2[i]-1,grpB2[j]-1)*2;
-				// un deplacement par adrversaire  du groupe jumeau
 				distanceTotale += mat.getDistanceBetween(grpA1[i]-1,grpA2[j]-1);
 				distanceTotale += mat.getDistanceBetween(grpA2[i]-1,grpA1[j]-1);
 				distanceTotale += mat.getDistanceBetween(grpB1[i]-1,grpB2[j]-1);
 				distanceTotale += mat.getDistanceBetween(grpB2[i]-1,grpB1[j]-1);
 			}
 
-			// un deplacement aleatoire dans le groupe adverse
 			a = (int) Math.random();
 			if (a==0) {
 				distanceTotale += mat.getDistanceBetween(grpA1[i]-1,grpB1[i]-1);
@@ -65,7 +78,6 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		}
 		int z;
 		for ( z= 0; z < 3 ; z++) {
-			//equilibreDesPoule = equilibreDesPoule + Integer.max(grpA1[z], grpB1[z]) - Integer.min(grpA1[z], grpB1[z]) + Integer.max(grpA2[z], grpB2[z]) - Integer.min(grpA2[z], grpB2[z]);
 			equilibrea = grpA1[z] + grpA2[z] ;
 			equilibreb = grpB1[z] + grpB2[z] ;
 		}
@@ -75,9 +87,15 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		noteMoyennePondereeEqDist = ( (noteDistance * opt.getPourcentageDistance()) + (noteEquilibre * (100 - opt.getPourcentageDistance()) ))/100;
 	}
 
+	/**
+	 * Creer un championnat complexe aléatoire.
+	 * @param matrice des distances
+	 * @param les options du fichier de parametrage
+	 * @return Un Championnat complexe
+	 */
 	public ChampionnatComplexe (Matrice mat,Options o) {
 		opt = o;
-		int [] Eq12 = FonctionsTransverse.tirage(12);
+		int [] Eq12 = FonctionsTransverses.tirage(12);
 		grpA1 = new int [3];  
 		grpA2 = new int [3];  
 		grpB1 = new int [3];  
@@ -95,19 +113,16 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		int a=0;
 		for ( int i = 0 ; i < 3 ; i ++ ) {
 			for ( int j = 0 ; j < 3 ; j ++ ) {
-				// deux deplacement par adversaire du groupe
 				distanceTotale += mat.getDistanceBetween(grpA1[i]-1,grpA1[j]-1)*2;
 				distanceTotale += mat.getDistanceBetween(grpA2[i]-1,grpA2[j]-1)*2;
 				distanceTotale += mat.getDistanceBetween(grpB1[i]-1,grpB1[j]-1)*2;
 				distanceTotale += mat.getDistanceBetween(grpB2[i]-1,grpB2[j]-1)*2;
-				// un deplacement par adrversaire  du groupe jumeau
 				distanceTotale += mat.getDistanceBetween(grpA1[i]-1,grpA2[j]-1);
 				distanceTotale += mat.getDistanceBetween(grpA2[i]-1,grpA1[j]-1);
 				distanceTotale += mat.getDistanceBetween(grpB1[i]-1,grpB2[j]-1);
 				distanceTotale += mat.getDistanceBetween(grpB2[i]-1,grpB1[j]-1);
 			}
 
-			// un deplacement aleatoire dans le groupe adverse
 			a = (int) Math.random();
 			if (a==0) {
 				distanceTotale += mat.getDistanceBetween(grpA1[i]-1,grpB1[i]-1);
@@ -129,36 +144,71 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		noteEquilibre = getEquilibreDesPoules() * 100 / 36 ;
 		noteMoyennePondereeEqDist = ( (noteDistance * opt.getPourcentageDistance()) + (noteEquilibre * (100 - opt.getPourcentageDistance()) ))/100;
 	}
-
+	
+	/**
+	 * Renvoie la distance ramenée sur 100. 
+	 * Le calcul est : distanceTotale * 100 / 52000. (52000 est environ la distance maximale)
+	 * @return NoteDistance
+	 */
 	public double getNoteDistance() {
 		return noteDistance;
 	}
 	
+	/**
+	 * Renvoie l'equilibre des poules ramenée sur 100.
+	 * Le calcul est : equilibre * 100 / 36. (36 est l'equilibre des poules maximal)
+	 * @return NoteEquilibre
+	 */
 	public double getNoteEquilibre() {
 		return noteEquilibre;
 	}
 	
+	/**
+	 * Renvoie la moyenne pondérée de la note d'équilibre et de la note de distance.
+	 * Le coeficient est a gerer dans le fichier de parametrage par l'utilisateur.
+	 * @return noteMoyennePondereeEqDist
+	 */
 	public double getNoteMoyennePondereeEqDist() {
 		return noteMoyennePondereeEqDist;
 	}
 	
+	/**
+	 * Renvoie la distance totale parcourue.
+	 * @return distanceTotale
+	 */
 	public double getDistanceTotale() {
 		return distanceTotale;
 	}
-
+	
+	/**
+	 * Renvoie la distance totale parcourue divisée par le nombre s'equipe.
+	 * @return distanceMoyenne
+	 */
 	public double getDistanceMoyenne() {
 		return getDistanceTotale () / 12;
 	}
 
-	// ici l'equilibre de la poule est l'equilibre des sous poules (eauilibre (A1,B1) + equilibre A2,B2))
+	/**
+	 * Renvoie l'equilibre des poules. 
+	 * L'equilibre est la différence de classement de chaque rang de chaque poule apres l'avoir classée.
+	 * @return equilibreDesPoule
+	 */
 	public double getEquilibreDesPoules() {
 		return equilibreDesPoule;
 	}
-
+	
+	/**
+	 * Renvoie la taille des poules.
+	 * @return taillesDesPoules
+	 */
 	public int getTaillePoule (){
 		return 3;
 	}
-
+	
+	/**
+	 * Renvoie un tableau du classement des poules.
+	 * @return TableauDesPoules
+	 */
 	public int [] getChampionnatComplexe () {
 		int ChampionnatComplexe [] = new int [18];
 		for (int i = 0 ; i < 3 ; i++ ) {
@@ -169,7 +219,11 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		}
 		return ChampionnatComplexe;
 	}
-
+	
+	/**
+	 * Renvoie une présentation des poules avec la disatnce et l'equilibre des poules.
+	 * @return equilibreDesPoule
+	 */
 	public String toString2 () {
 		String a = "ChampionnatComplexe : [";
 		a = a + " { ( " ;
@@ -195,6 +249,10 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		return a;
 	}
 	
+	/**
+	 * Renvoie une présentation des poules avec les notes ramenées sur 100.
+	 * @return equilibreDesPoule
+	 */
 	public String toString () {
 		String a = "ChampionnatComplexe :\n";
 		a = a + "Poule A Groupe 1 :\t" ;
@@ -218,14 +276,13 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		a = a + "Moyenne pondérée de l'equilibre et de la distance ramenées sur 100 : "+getNoteMoyennePondereeEqDist()+" (avec un coefiscient de "+opt.getPourcentageDistance()+" pour la distance et de "+(100-opt.getPourcentageDistance())+" pour l'equilibre) \n";
 		return a;
 	}
-
-	// l'equilibre des poules est primordiale.
-	// equilibre le moins bon = (7+8+9+10+11+12) - (1+2+3+4+5+6) = 36
-	//distance max = 52000 env
 	
-	//noteDistance;
-	//private double noteEquilibre;
-	//private double noteMoyennePondereeEqDist;
+	/**
+	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne pondérée.
+	 * La comparison est donnée dans le fichier d'options données.
+	 * @param ChampionnatComplexe 
+	 * @return la comparaison des deux championnat
+	 */
 	public int compareTo(ChampionnatComplexe o) {
 		if (opt.getEvaluation() == 0) {
 			if (o.getNoteDistance() == this.getNoteDistance()) {

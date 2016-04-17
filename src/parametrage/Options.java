@@ -3,7 +3,11 @@ package parametrage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
+/**
+ * Options est une classe regroupant les options renseignées dans le fichier de parametrage.
+ * @author Alexandre Enouf
+ * @version 1.0
+ */
 public class Options {
 	private int typeChampionnat; // 0 -> simple, 1 -> complexe
 	private int nbGen; //nb de générations
@@ -12,6 +16,21 @@ public class Options {
 	private int pourcentageDistance; // Si evaluation mixte
 	private int pourcentageSelection;
 	private int pourcentageMutation;
+	/**
+	 * Creer une instance d'options a partir d'fichier de parametres. 
+	 * Options prises en compte :
+	 * - type de Championnat (0 pour des poules simples, 1 pour des poules complexes)
+	 * - nombre de generations pour l'algorithme génétique
+	 * - nombre de championnats par populations
+	 * - type d'evaluation (0 pour evaluet la distance, 1 l'equilibre des poules et 2 pour une evaluation par moyenne ponderee)
+	 * - pourcentage de la distance lors d'une evaluation par moyenne ponderee (100 - pourcntage distance pour l'equilibre des poules)
+	 * - pourcentage des meilleurs elements gardés apres chaque evaluation
+	 * - pourcentage d'element à muter
+	 * @param Eq12 [12]
+	 * @param matrice des distances
+	 * @param les options du fichier de parametrage
+	 * @return Un Championnat complexe
+	 */
 	public Options () throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(CSVFile.FicParam));
@@ -41,30 +60,59 @@ public class Options {
 		
 		br.close();
 	}
-
+	
+	/**
+	 * Retourne le type de championnat. O pour des poules simples, 1 pour des poules complexes.
+	 * @return le type de championnat.
+	 */
 	public int getTypeChampionnat() {
 		return typeChampionnat;
 	}
 
+	/**
+	 * Retourne le nombre de génération a faire. O pour des poules simples, 1 pour des poules complexes.
+	 * @return le nombre de générations.
+	 */
 	public int getNbGen() {
 		return nbGen;
 	}
 
+	/**
+	 * Retourne le nombre d'individus par populations 
+	 * * @return le nombre d'individus.
+	 */
 	public int getNbIndiv() {
 		return nbIndiv;
 	}
 
+	/**
+	 * Retourne le type d'evaluations.
+	 * * @return le type d'evaluations.
+	 */
 	public int getEvaluation() {
 		return evaluation;
 	}
 
+	/**
+	 * Retourne le coeficient de la distance pour la moyenne ponderee .
+	 * @return ceoficient de la distance.
+	 */
 	public int getPourcentageDistance() {
 		return pourcentageDistance;
 	}
 
+	/**
+	 * Retourne le pourcentage de meilleurs element a garder par evaluation de la populations.
+	 * @return pourcentage de meilleurs elements.
+	 */
 	public int getPourcentageSelection(){
 		return pourcentageSelection;
 	}
+	
+	/**
+	 * Retourne le pourcentage de d'element a muter par populations.
+	 * @return pourcentage de mutation.
+	 */
 	public int getPourcentageMutation(){
 		return pourcentageMutation;
 	}

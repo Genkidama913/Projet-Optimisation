@@ -8,11 +8,23 @@ import matrice.Matrice;
 import mutations.MutationSimple;
 import parametrage.Options;
 
+/**
+* PopulationSimple est une classe implementant l'interface Population.
+* Ici la population est une ArrayListe de championnat simples.
+** @author Alexandre Enouf
+* @version 1.0
+*/
+
 public class PopulationSimple implements Population {
 
 	private ArrayList<ChampionnatSimple> pop;
 	private int nbIndiv;
 	
+	/**
+	 * Creer une population complexe a partir des données rensegnées dans le fichier de parametrage
+	 * @param matrice
+	 * @param options
+	 */
 	public PopulationSimple (Matrice mat, Options o) {
 		this.nbIndiv = o.getNbIndiv();
 		pop = new ArrayList<ChampionnatSimple> (); 
@@ -21,10 +33,18 @@ public class PopulationSimple implements Population {
 		}
 	}
 
+	/**
+	 * Classe une population simple du meilleur au plus mauvais selon l'evaluation entrée en parametre
+	 */
 	public void evaluation () {
 		Collections.sort (pop);
 	}
 
+	/**
+	 * Fait la selection/mutation/tirage de nouveaux individus d'une population selon les parameres du fichier de parametrage
+	 * @param Matrice 
+	 * @param Options
+	 */
 	public void selectionAndMutation  (Matrice mat, Options o){
 		int pourcentageSel = o.getPourcentageSelection();
 		int pourcentageMut = o.getPourcentageMutation();
@@ -46,6 +66,10 @@ public class PopulationSimple implements Population {
 	
 	}
 	
+	/**
+	 * retourne le ieme championnat d'une population
+	 * @param i
+	 */
 	public ChampionnatSimple getChampionnat (int i) {
 		return pop.get(i);
 	}

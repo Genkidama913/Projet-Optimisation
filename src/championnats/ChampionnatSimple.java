@@ -2,9 +2,17 @@ package championnats;
 
 import java.util.Arrays;
 
-import matrice.FonctionsTransverse;
+import matrice.FonctionsTransverses;
 import matrice.Matrice;
 import parametrage.Options;
+
+/**
+ * CampionnatSimple est une classe qui implémente l'interface Championnat.
+ * Un championnat à 18 équipes réparties en deux poules de 9 et jouant une fois chaque adversaire de la poule.
+ * 
+ * @author Alexandre Enouf
+ * @version 1.0
+ */
 
 public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Championnat {
 	private int [] pouleA,pouleB;
@@ -15,7 +23,13 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	private double noteEquilibre;
 	private double noteMoyennePondereeEqDist;
 	
-	// EQUILIBRE DES POULES = DIFFERENCE ENTRE LA SOMME DES CLASSEMENT DE CHAQUES POULES
+	/**
+	 * Creer un championnat simple à partir d'un tableau donné en paramètre.
+	 * @param Eq12 [18]
+	 * @param matrice des distances
+	 * @param les options du fichier de parametrage
+	 * @return Un Championnat complexe
+	 */
 	public ChampionnatSimple (int [] eq18,Matrice mat,Options o) {
 		opt = o;
 		pouleA = new int [9];
@@ -43,13 +57,19 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 			}
 		}
 		noteDistance = getDistanceTotale() * 100 / 36000 ;
-		noteEquilibre = getEquilibreDesPoules() * 100 / 90 ;
+		noteEquilibre = getEquilibreDesPoules() * 100 / 81 ;
 		noteMoyennePondereeEqDist = ( (noteDistance * opt.getPourcentageDistance()) + (noteEquilibre * (100 - opt.getPourcentageDistance()) ))/100;
 	}
 
+	/**
+	 * Creer un championnat simple aléatoire.
+	 * @param matrice des distances
+	 * @param les options du fichier de parametrage
+	 * @return Un Championnat complexe
+	 */
 	public ChampionnatSimple (Matrice mat,Options o) {
 		opt = o;
-		int [] t = FonctionsTransverse.tirage(18);
+		int [] t = FonctionsTransverses.tirage(18);
 		int eqA = 0,eqB = 0;
 		pouleA = new int [9];
 		pouleB = new int [9];
@@ -79,34 +99,70 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	
 	}
 	
+	/**
+	 * Renvoie la distance ramenée sur 100. 
+	 * Le calcul est : distanceTotale * 100 / 36000. (36000 est environ la distance maximale)
+	 * @return NoteDistance
+	 */
 	public double getNoteDistance() {
 		return noteDistance;
 	}
 	
+	/**
+	 * Renvoie l'equilibre des poules ramenée sur 100.
+	 * Le calcul est : equilibre * 100 / 81. (81 est l'equilibre des poules maximal)
+	 * @return NoteEquilibre
+	 */
 	public double getNoteEquilibre() {
 		return noteEquilibre;
 	}
 	
+	/**
+	 * Renvoie la moyenne pondérée de la note d'équilibre et de la note de distance.
+	 * Le coeficient est a gerer dans le fichier de parametrage par l'utilisateur.
+	 * @return noteMoyennePondereeEqDist
+	 */
 	public double getNoteMoyennePondereeEqDist() {
 		return noteMoyennePondereeEqDist;
 	}
 
+	/**
+	 * Renvoie la distance totale parcourue.
+	 * @return distanceTotale
+	 */
 	public double getDistanceTotale() {
 		return distanceTotale;
 	}
-
+	
+	/**
+	 * Renvoie la distance totale parcourue divisée par le nombre s'equipe.
+	 * @return distanceMoyenne
+	 */
 	public double getDistanceMoyenne() {
 		return getDistanceTotale() / 18;
 	}
-
+	
+	/**
+	 * Renvoie l'equilibre des poules. 
+	 * L'equilibre est la différence de classement de chaque rang de chaque poule apres l'avoir classée.
+	 * @return equilibreDesPoule
+	 */
 	public double getEquilibreDesPoules() {
 		return equilibreDesPoule;
 	}
 
+	/**
+	 * Renvoie la taille des poules.
+	 * @return taillesDesPoules
+	 */
 	public int getTaillePoule (){
 		return 9;
 	}
 
+	/**
+	 * Renvoie un tableau du classement des poules.
+	 * @return TableauDesPoules
+	 */
 	public int [] getChampionnatSimple () {
 		int ChampionnatSimple [] = new int [18];
 		for (int i = 0 ; i < 9 ; i++ ) {
@@ -116,6 +172,10 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 		return ChampionnatSimple;
 	}
 
+	/**
+	 * Renvoie une présentation des poules avec la disatnce et l'equilibre des poules.
+	 * @return equilibreDesPoule
+	 */
 	public String toString () {
 		String a = "ChampionnatSimple :\n";
 		a = a + "Poule A :\t" ;
@@ -131,6 +191,10 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 		return a;
 	}
 	
+	/**
+	 * Renvoie une présentation des poules avec les notes ramenées sur 100.
+	 * @return equilibreDesPoule
+	 */
 	public String toString2 () {
 		String a = "ChampionnatSimple : {";
 		a = a + " ( " ;
@@ -148,9 +212,12 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 		return a;
 	}
 
-	// l'equilibre des poules est primordiale.
-	// equilibre le moins bon = 81
-	
+	/**
+	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne pondérée.
+	 * La comparison est donnée dans le fichier d'options données.
+	 * @param ChampionnatSimple 
+	 * @return la comparaison des deux championnat
+	 */
 	public int compareTo(ChampionnatSimple o) {
 		if (opt.getEvaluation() == 0) {
 			if (o.getNoteDistance() == this.getNoteDistance()) {

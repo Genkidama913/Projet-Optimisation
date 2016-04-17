@@ -4,8 +4,22 @@ import championnats.ChampionnatComplexe;
 import matrice.Matrice;
 import parametrage.Options;
 
+/**
+ * MutationComplexe est une classe qui renseigne les différentes types de mutations d'un ChampionnatComplexe.
+ * 
+ * @author Alexandre Enouf
+ * @version 1.0
+ */
+
 public class MutationComplexe {
-	
+
+	/**
+	 * créée un nouveau championnat complexe a partir de celui donné en parametre en changeant une equipe entre deux droupes éloignés.
+	 * @param championnat complexe
+	 * @param matrice
+	 * @param options
+	 * @return un nouveau championnat complexe.
+	 */
 	public static ChampionnatComplexe mutationUniqueGroupeEloigne (ChampionnatComplexe champ, Matrice mat, Options o) {
 		int [] champi = champ.getChampionnatComplexe();
 		int i = (int)(Math.random()*5);
@@ -16,6 +30,13 @@ public class MutationComplexe {
 		return nouveau ;
 	}
 
+	/**
+	 * créée un nouveau championnat complexe a partir de celui donné en parametre en changeant une equipe entre deux droupes proches.
+	 * @param championnat complexe
+	 * @param matrice
+	 * @param options
+	 * @return un nouveau championnat complexe.
+	 */
 	public static ChampionnatComplexe mutationUniqueGroupeProche (ChampionnatComplexe champ, Matrice mat,Options o) {
 		int [] champi = champ.getChampionnatComplexe();
 		int swap;
@@ -33,8 +54,15 @@ public class MutationComplexe {
 		ChampionnatComplexe nouveau = new ChampionnatComplexe (champi, mat,o);
 		return nouveau ;
 	}
-	
-	// effectue entre 1 et 6 mutations uniques
+
+	/**
+	 * créée un nouveau championnat complexe a partir de celui donné en parametre en effectuant entre 1 et 5 mutation.
+	 * Chaque mutation est aleatoirement une mutation proche ou une mutation éloignée.
+	 * @param championnat complexe
+	 * @param matrice
+	 * @param options
+	 * @return un nouveau championnat complexe.
+	 */
 	public static ChampionnatComplexe mutationsAleatoire ( ChampionnatComplexe champ, Matrice mat,Options o) {
 		int nbMut = (int)(Math.random()*5) + 1;
 		for (int i = 0 ; i < nbMut; i++){
@@ -46,18 +74,4 @@ public class MutationComplexe {
 		}
 		return champ ;
 	}
-	
-	public static ChampionnatComplexe nbMutationsAleatoire ( int nbMut,ChampionnatComplexe champ, Matrice mat,Options o) {
-		for (int i = 0 ; i < nbMut; i++){
-			if ((int)(Math.random()) == 1){
-				champ = mutationUniqueGroupeProche (champ, mat,o);
-			} else {
-				champ = mutationUniqueGroupeEloigne (champ, mat,o);
-			}
-		}
-		return champ ;
-	}
-
-	
-
 }

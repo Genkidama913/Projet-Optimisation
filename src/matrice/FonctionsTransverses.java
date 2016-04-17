@@ -2,8 +2,15 @@ package matrice;
 
 import java.util.ArrayList;
 
-public class FonctionsTransverse {
+public class FonctionsTransverses {
 
+	/**
+	 * FonctionsTransverse est une classe contenant des fonctions.
+	 * 
+	 * @author Alexandre Enouf
+	 * @version 1.0
+	 */
+	
 	public static int [] tirage (int nbEquipes) {
 		int  ret [] =  new int [nbEquipes];
 		ArrayList<Integer> liste = new ArrayList<Integer> ();

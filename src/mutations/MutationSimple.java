@@ -4,9 +4,22 @@ import championnats.ChampionnatSimple;
 import matrice.Matrice;
 import parametrage.Options;
 
+/**
+ * MutationSimple est une classe qui renseigne les différentes types de mutations d'un ChampionnatSimple.
+ * 
+ * @author Alexandre Enouf
+ * @version 1.0
+ */
+
 public class MutationSimple {
 
-	// creer un nouveau championat a partir de celui donné en parametre, en echangeat la aleatoirement la ieme equipe de chaque poule par celle de l'autre
+	/**
+	 * créée un nouveau championnat simple a partir de celui donné en parametre en changeant aleatoirement une equipe dans chaques poules.
+	 * @param championnat simple
+	 * @param matrice
+	 * @param options
+	 * @return un nouveau championnat simple.
+	 */
 	public static ChampionnatSimple mutationUniqueAleatoire (ChampionnatSimple champ, Matrice mat,Options o) {
 		int i =  (int) (Math.random()*8) ;
 		int [] champi = champ.getChampionnatSimple();
@@ -17,7 +30,14 @@ public class MutationSimple {
 		return nouveau ;
 	}
 
-
+	/**
+	 * créée un nouveau championnat simple a partir de celui donné en parametre en effectuant un nombre donné de mutations simples aléaoires.
+	 * @parem Un nombre de mutations a effectuer
+	 * @param championnat simple
+	 * @param matrice
+	 * @param options
+	 * @return un nouveau championnat simple.
+	 */
 	public static ChampionnatSimple nbMutationsAleatoire (int nb, ChampionnatSimple champ, Matrice mat,Options o) {
 		int i;
 		int [] champi= champ.getChampionnatSimple();
@@ -33,7 +53,14 @@ public class MutationSimple {
 		return nouveau ;
 	}
 
-	
+	/**
+	 * créée un nouveau championnat simple a partir de celui donné en parametre en effectuant aleatoirement entre 1 et 6  mutations simples aléaoires.
+	 * @parem Un nombre de mutations a effectuer
+	 * @param championnat simple
+	 * @param matrice
+	 * @param options
+	 * @return un nouveau championnat simple.
+	 */
 	public static ChampionnatSimple mutationsAleatoire (ChampionnatSimple champ, Matrice mat,Options o) {
 		int i;
 		int nb = (int)(Math.random()*5)+1 ;
