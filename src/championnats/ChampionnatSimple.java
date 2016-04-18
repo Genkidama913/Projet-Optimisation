@@ -52,7 +52,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 		int i, j ;
 		this.distanceTotale=0;
 		for ( i = 0 ; i < 9 ; i++ ){
-			for ( j = i ; j < 9 ; j++ ){
+			for ( j = 0 ; j < 9 ; j++ ){
 				this.distanceTotale = this.distanceTotale + mat.getDistanceBetween(pouleA[i]-1, pouleA[j]-1) + mat.getDistanceBetween(pouleB[i]-1, pouleB[j]-1);
 			}
 		}
