@@ -1,7 +1,7 @@
 package championnats;
 
 /**
- * Championnat est une interface contenant toutes les methodes que doivent implémenter un chapionnat
+ * Championnat est une interface contenant toutes les methodes que doivent implementer un championnat
  * @author Alexandre Enouf
  * @version 1.0
  */
@@ -9,19 +9,19 @@ package championnats;
 public interface Championnat {
 	
 	/**
-	 * Renvoie la distance ramenée sur 100.
+	 * Renvoie la distance ramenee sur 100.
 	 * @return NoteDistance
 	 */
 	public double getNoteDistance() ;
 	
 	/**
-	 * Renvoie l'equilibre des poules ramenée sur 100.
+	 * Renvoie l'equilibre des poules ramenee sur 100.
 	 * @return NoteEquilibre
 	 */
 	public double getNoteEquilibre() ;
 	
 	/**
-	 * Renvoie la moyenne pondérée de la note d'équilibre et de la note de distance.
+	 * Renvoie la moyenne ponderee de la note d'equilibre et de la note de distance.
 	 * @return noteMoyennePondereeEqDist
 	 */
 	public double getNoteMoyennePondereeEqDist() ;
@@ -33,7 +33,7 @@ public interface Championnat {
 	public double getDistanceTotale() ;
 	
 	/**
-	 * Renvoie la distance totale parcourue divisée par le nombre s'equipe.
+	 * Renvoie la distance totale parcourue divisee par le nombre d'equipe.
 	 * @return distanceMoyenne
 	 */
 	public double getDistanceMoyenne() ;
@@ -45,13 +45,13 @@ public interface Championnat {
 	public double getEquilibreDesPoules();
 	
 	/**
-	 * Renvoie une présentation des poules avec la disatnce et l'equilibre des poules.
+	 * Renvoie une presentation des poules avec la distance et l'equilibre des poules.
 	 * @return equilibreDesPoule
 	 */
 	public String toString ();
 	
 	/**
-	 * Renvoie une présentation des poules avec les notes ramenées sur 100.
+	 * Renvoie une presentation des poules avec les notes ramenees sur 100.
 	 * @return equilibreDesPoule
 	 */
 	public String toString2 ();
