@@ -5,7 +5,7 @@ import matrice.Matrice;
 import parametrage.Options;
 
 /**
- * MutationSimple est une classe qui renseigne les différentes types de mutations d'un ChampionnatSimple.
+ * MutationSimple est une classe qui renseigne les differentes types de mutations d'un ChampionnatSimple.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -14,7 +14,7 @@ import parametrage.Options;
 public class MutationSimple {
 
 	/**
-	 * créée un nouveau championnat simple a partir de celui donné en parametre en changeant aleatoirement une equipe dans chaques poules.
+	 * Cree un nouveau championnat simple a partir de celui donne en parametre en changeant aleatoirement une equipe dans chaques poules.
 	 * @param championnat simple
 	 * @param matrice
 	 * @param options
@@ -31,7 +31,7 @@ public class MutationSimple {
 	}
 
 	/**
-	 * créée un nouveau championnat simple a partir de celui donné en parametre en effectuant un nombre donné de mutations simples aléaoires.
+	 * Cree un nouveau championnat simple a partir de celui donn� en parametre en effectuant un nombre donne de mutations simples aleaoires.
 	 * @parem Un nombre de mutations a effectuer
 	 * @param championnat simple
 	 * @param matrice
@@ -54,7 +54,7 @@ public class MutationSimple {
 	}
 
 	/**
-	 * créée un nouveau championnat simple a partir de celui donné en parametre en effectuant aleatoirement entre 1 et 6  mutations simples aléaoires.
+	 * Cree un nouveau championnat simple a partir de celui donne en parametre en effectuant aleatoirement entre 1 et 6 mutations simples aleaoires.
 	 * @parem Un nombre de mutations a effectuer
 	 * @param championnat simple
 	 * @param matrice

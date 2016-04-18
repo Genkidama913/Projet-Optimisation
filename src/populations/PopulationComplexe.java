@@ -21,7 +21,7 @@ public class PopulationComplexe implements Population{
 	private int nbIndiv;
 	
 	/**
-	 * Creer une population complexe a partir des données rensegnées dans le fichier de parametrage
+	 * Creer une population complexe a partir des donnees renseignees dans le fichier de parametrage.
 	 * @param mat
 	 * @param o
 	 */
@@ -34,14 +34,14 @@ public class PopulationComplexe implements Population{
 	}
 
 	/**
-	 * Classe une population du meilleur au plus mauvais selon l'evaluation entrée en parametre
+	 * Classe une population du meilleur au plus mauvais selon l'evaluation entree en parametre.
 	 */
 	public void evaluation () {
 		Collections.sort (pop);
 	}
 	
 	/**
-	 * Fait la selection/mutation/tirage de nouveaux individus d'une population selon les parameres du fichier de parametrage
+	 * Fait la selection/mutation/tirage de nouveaux individus d'une population selon les parameres du fichier de parametrage.
 	 * @param mat
 	 * @param o
 	 */
@@ -67,7 +67,7 @@ public class PopulationComplexe implements Population{
 	}
 	
 	/**
-	 * retourne le ieme championnat d'une population
+	 * retourne le ieme championnat d'une population.
 	 * @param i
 	 */
 	public ChampionnatComplexe getChampionnat (int i) {

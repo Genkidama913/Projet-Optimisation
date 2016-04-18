@@ -5,7 +5,7 @@ import matrice.Matrice;
 import parametrage.Options;
 
 /**
- * MutationComplexe est une classe qui renseigne les diff√©rentes types de mutations d'un ChampionnatComplexe.
+ * MutationComplexe est une classe qui renseigne les differentes types de mutations d'un ChampionnatComplexe.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -14,7 +14,7 @@ import parametrage.Options;
 public class MutationComplexe {
 
 	/**
-	 * cr√©√©e un nouveau championnat complexe a partir de celui donn√© en parametre en changeant une equipe entre deux droupes √©loign√©s.
+	 * Cree un nouveau championnat complexe a partir de celui donnÈ en parametre en changeant une equipe entre deux groupes ÈloignÈs.
 	 * @param championnat complexe
 	 * @param matrice
 	 * @param options
@@ -31,7 +31,7 @@ public class MutationComplexe {
 	}
 
 	/**
-	 * cr√©√©e un nouveau championnat complexe a partir de celui donn√© en parametre en changeant une equipe entre deux droupes proches.
+	 * Cree un nouveau championnat complexe a partir de celui donnÈ en parametre en changeant une equipe entre deux groupes proches.
 	 * @param championnat complexe
 	 * @param matrice
 	 * @param options
@@ -56,8 +56,8 @@ public class MutationComplexe {
 	}
 
 	/**
-	 * cr√©√©e un nouveau championnat complexe a partir de celui donn√© en parametre en effectuant entre 1 et 5 mutation.
-	 * Chaque mutation est aleatoirement une mutation proche ou une mutation √©loign√©e.
+	 * CrÈe un nouveau championnat complexe a partir de celui donnÈ en parametre en effectuant entre 1 et 5 mutation(s).
+	 * Chaque mutation est aleatoirement une mutation proche ou une mutation ÈloignÈe.
 	 * @param championnat complexe
 	 * @param matrice
 	 * @param options

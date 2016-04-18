@@ -6,7 +6,7 @@ import java.io.IOException;
 import parametrage.CSVFile;
 
 /**
- * Matrice est une classe creer une matrice des distances de 18 sur 18 a partir du fichier MatriceDeDistance.csv.
+ * Matrice est une classe creant une matrice des distances de 18 sur 18 a partir du fichier MatriceDeDistance.csv.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -18,8 +18,8 @@ public class Matrice {
 	private int taille = 18;
 	
 	/**
-	 * CrÃ©Ã©e une matrice de double en lisant dans le fichier cvs de matrice.
-	 * @return Une matrice de double crÃ©Ã©e a partir du fichier csv.
+	 * Crée une matrice de double en lisant dans le fichier csv de matrice.
+	 * @return Une matrice de double créée a partir du fichier csv.
 	 */
 	public Matrice () throws NumberFormatException, IOException {
 		
@@ -56,7 +56,7 @@ public class Matrice {
 	
 	/**
 	 * Retourne la chaine de caractere de la matrice.
-	 * @return l'afichage de la matrice [i][j].
+	 * @return l'affichage de la matrice [i][j].
 	 */
 	public String toString () {
 		String ret = "";
@@ -70,7 +70,7 @@ public class Matrice {
 	}
 	
 	/**
-	 * Retourne le a taille de la matrice.
+	 * Retourne la taille de la matrice.
 	 * @return taille.
 	 */
 	public int getTaille() {

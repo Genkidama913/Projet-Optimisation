@@ -14,9 +14,9 @@ import populations.PopulationSimple;
 
 /**
  * MainPrincipal est le main principal du programme.
- * Il lit les paramètres du fichier Parametrage.csv, et fait le programme en conséquence. 
- * Ecrit dans un fichier de resultats les parametres, le meilleur championnat,celui du milieu et le dernier 
- * de la premiere, milieu et de la derniere génération de population.
+ * Il lit les parametres du fichier Parametrage.csv, et fait le programme en consequence. 
+ * Ecrit dans un fichier de resultats les parametres, le meilleur championnat, celui du milieu et le dernier d'une population. 
+ * De la premiere, milieu et de la derniere generation de population.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -54,7 +54,7 @@ public class MainPrincipal {
 			writer.write( p.getChampionnat(o.getNbIndiv()-1).toString()); 
 			writer.write("\n===============================================================================\n");
 			
-			//Algo Génétique 
+			//Algo Genetique 
 			for (int i = 0 ; i< o.getNbGen() ; i++) {
 				p.selectionAndMutation(mat,o);
 				p.evaluation();

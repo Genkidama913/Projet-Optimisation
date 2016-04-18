@@ -7,9 +7,9 @@ import matrice.Matrice;
 import parametrage.Options;
 
 /**
- * CampionnatComplexe est une classe qui implémente l'interface Championnat.
- * Un championnat à 12 équipes dont les équipes sont répartis en 2 groupes de 6 et 2 sous­-groupes de 3 au sein de chaque groupe de 6.
- * Les équipes se déplacement 2 fois chez chaque adversaire du sous­groupe, 1 fois chez chaque autre adversaires du groupe et 1 fois chez 3 des 6 adversaires de l’autre groupe.
+ * ChampionnatComplexe est une classe qui implemente l'interface Championnat.
+ * Un championnat a 12 equipes dont les equipes sont repartis en 2 groupes de 6 et 2 sous-groupes de 3 au sein de chaque groupe de 6.
+ * Les equipes se deplacant 2 fois chez chaque adversaire du sous�groupe, 1 fois chez chaque autre adversaires du groupe et 1 fois chez 3 des 6 adversaires de l'autre groupe.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -26,7 +26,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	private double noteMoyennePondereeEqDist;
 	
 	/**
-	 * Creer un championnat complexe a partir d'un tableau donné en paramètre.
+	 * Creer un championnat complexe a partir d'un tableau donne en parametre.
 	 * @param Eq12
 	 * @param matrice des distances
 	 * @param les options du fichier de parametrage
@@ -88,7 +88,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 
 	/**
-	 * Creer un championnat complexe aléatoire.
+	 * Creer un championnat complexe aleatoire.
 	 * @param matrice des distances
 	 * @param les options du fichier de parametrage
 	 * @return Un Championnat complexe
@@ -146,7 +146,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Renvoie la distance ramenée sur 100. 
+	 * Renvoie la distance ramenee sur 100. 
 	 * Le calcul est : distanceTotale * 100 / 52000. (52000 est environ la distance maximale)
 	 * @return NoteDistance
 	 */
@@ -155,7 +155,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Renvoie l'equilibre des poules ramenée sur 100.
+	 * Renvoie l'equilibre des poules ramenee sur 100.
 	 * Le calcul est : equilibre * 100 / 36. (36 est l'equilibre des poules maximal)
 	 * @return NoteEquilibre
 	 */
@@ -164,8 +164,8 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Renvoie la moyenne pondérée de la note d'équilibre et de la note de distance.
-	 * Le coeficient est a gerer dans le fichier de parametrage par l'utilisateur.
+	 * Renvoie la moyenne ponderee de la note d'equilibre et de la note de distance.
+	 * Le coefficient est a gerer dans le fichier de parametrage par l'utilisateur.
 	 * @return noteMoyennePondereeEqDist
 	 */
 	public double getNoteMoyennePondereeEqDist() {
@@ -181,7 +181,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Renvoie la distance totale parcourue divisée par le nombre s'equipe.
+	 * Renvoie la distance totale parcourue divisee par le nombre d'equipe.
 	 * @return distanceMoyenne
 	 */
 	public double getDistanceMoyenne() {
@@ -190,7 +190,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 
 	/**
 	 * Renvoie l'equilibre des poules. 
-	 * L'equilibre est la différence de classement de chaque rang de chaque poule apres l'avoir classée.
+	 * L'equilibre est la difference de classement de chaque rang de chaque poule apres l'avoir classee.
 	 * @return equilibreDesPoule
 	 */
 	public double getEquilibreDesPoules() {
@@ -221,7 +221,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Renvoie une présentation des poules avec la disatnce et l'equilibre des poules.
+	 * Renvoie une presentation des poules avec la disatnce et l'equilibre des poules.
 	 * @return equilibreDesPoule
 	 */
 	public String toString2 () {
@@ -250,7 +250,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Renvoie une présentation des poules avec les notes ramenées sur 100.
+	 * Renvoie une presentation des poules avec les notes ramenees sur 100.
 	 * @return equilibreDesPoule
 	 */
 	public String toString () {
@@ -280,10 +280,10 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	}
 	
 	/**
-	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne pondérée.
-	 * La comparison est donnée dans le fichier d'options données.
+	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne ponderee.
+	 * La comparaison est donnee dans le fichier d'options donnees.
 	 * @param ChampionnatComplexe 
-	 * @return la comparaison des deux championnat
+	 * @return la comparaison des deux championnats
 	 */
 	public int compareTo(ChampionnatComplexe o) {
 		if (opt.getEvaluation() == 0) {
