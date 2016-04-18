@@ -45,29 +45,29 @@ public class MainPrincipal {
 			writer.write(o.toString());
 			writer.write("Première Génération\n\n");
 			writer.write("Championnat 1 : \n---------------\n");
-			writer.write( p.getChampionnat(0).toString2());
+			writer.write( p.getChampionnat(0).toString());
 			writer.write("\n\n");
 			writer.write("Championnat "+o.getNbIndiv()/2+" : \n---------------\n");
-			writer.write( p.getChampionnat(o.getNbIndiv()/2).toString2()); 
+			writer.write( p.getChampionnat(o.getNbIndiv()/2).toString()); 
 			writer.write("\n\n");
 			writer.write("Championnat "+o.getNbIndiv()+" : \n---------------\n");
-			writer.write( p.getChampionnat(o.getNbIndiv()-1).toString2()); 
+			writer.write( p.getChampionnat(o.getNbIndiv()-1).toString()); 
 			writer.write("\n===============================================================================\n");
 			
 			//Algo Génétique 
 			for (int i = 0 ; i< o.getNbGen() ; i++) {
 				p.evaluation();
 				p.selectionAndMutation(mat,o);
-				if (i == o.getNbGen()/2) {
+				if (i == (int)o.getNbGen()/2) {
 					writer.write(i+"ème Génération\n\n");
 					writer.write("Championnat 1 : \n---------------\n");
-					writer.write( p.getChampionnat(0).toString2());
+					writer.write( p.getChampionnat(0).toString());
 					writer.write("\n\n");
 					writer.write("Championnat "+o.getNbIndiv()/2+" : \n---------------\n");
-					writer.write( p.getChampionnat(o.getNbIndiv()/2).toString2()); 
+					writer.write( p.getChampionnat(o.getNbIndiv()/2).toString()); 
 					writer.write("\n\n");
 					writer.write("Championnat "+o.getNbIndiv()+" : \n---------------\n");
-					writer.write( p.getChampionnat(o.getNbIndiv()-1).toString2()); 
+					writer.write( p.getChampionnat(o.getNbIndiv()-1).toString()); 
 				}
 			}
 			p.evaluation();
@@ -76,13 +76,13 @@ public class MainPrincipal {
 			writer.write("\n===============================================================================\n");
 			writer.write("Dernière Génération\n\n");
 			writer.write("Championnat 1 : \n---------------\n");
-			writer.write( p.getChampionnat(0).toString2());
+			writer.write( p.getChampionnat(0).toString());
 			writer.write("\n\n");
 			writer.write("Championnat "+o.getNbIndiv()/2+" : \n---------------\n");
-			writer.write( p.getChampionnat(o.getNbIndiv()/2).toString2()); 
+			writer.write( p.getChampionnat(o.getNbIndiv()/2).toString()); 
 			writer.write("\n\n");
 			writer.write("Championnat "+o.getNbIndiv()+" : \n---------------\n");
-			writer.write( p.getChampionnat(o.getNbIndiv()-1).toString2()); 
+			writer.write( p.getChampionnat(o.getNbIndiv()-1).toString()); 
 			writer.close();
 		}
 		catch (IOException e)
