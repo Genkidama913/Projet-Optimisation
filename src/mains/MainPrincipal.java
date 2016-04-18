@@ -36,6 +36,8 @@ public class MainPrincipal {
 			p = new PopulationComplexe (mat,o);
 		}
 		
+		p.evaluation();
+		
 		// Ecriture des resultats dans le fichier
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Resultats/Resultats_"+LocalDateTime.now()+".txt")));

@@ -186,8 +186,11 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 		for ( int i = 0 ; i < 9 ; i++ ) {
 			a = a + pouleB [i] +" \t" ;
 		}
-		a = a + "\nEquilibre des poules :\t" + getEquilibreDesPoules()+"\n" ;
-		a = a + "Distance totale parcourue : " +getDistanceTotale()+"\nDistance moyenne par equipe parcourue : "+getDistanceMoyenne()+"\n" ;
+		a = a + "\nEquilibre des poules:\t" + getEquilibreDesPoules()+" (note = "+ noteEquilibre +")\n" ;
+		a = a + "Distance totale parcourue:\t" +getDistanceTotale()+" (note = "+ noteDistance +")\nDistance moyenne par equipe parcourue : "+getDistanceMoyenne()+"\n";
+		if (opt.getEvaluation() == 2) {
+			a = a + "Moyenne pondérée de l'equilibre et de la distance ramenées sur 100 : "+getNoteMoyennePondereeEqDist()+" (avec un coefiscient de "+opt.getPourcentageDistance()+" pour la distance et de "+(100-opt.getPourcentageDistance())+" pour l'equilibre) \n";
+		}
 		return a;
 	}
 	

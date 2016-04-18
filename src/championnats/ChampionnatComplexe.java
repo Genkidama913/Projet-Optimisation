@@ -27,7 +27,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	
 	/**
 	 * Creer un championnat complexe a partir d'un tableau donné en paramètre.
-	 * @param Eq12 [12]
+	 * @param Eq12
 	 * @param matrice des distances
 	 * @param les options du fichier de parametrage
 	 * @return Un Championnat complexe
@@ -271,9 +271,11 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 		for ( int i = 0 ; i < 3 ; i++ ) {
 			a = a + grpB2 [i] +" \t" ;
 		}
-		a = a + "\nEquilibre des poules :\t" + getEquilibreDesPoules()+" (RAMENE SUR 100 = "+ noteEquilibre +")\n" ;
-		a = a + "Distance totale parcourue : " +getDistanceTotale()+" (RAMENE SUR 100 = "+ noteDistance +")\nDistance moyenne par equipe parcourue : "+getDistanceMoyenne()+"\n";
-		a = a + "Moyenne pondérée de l'equilibre et de la distance ramenées sur 100 : "+getNoteMoyennePondereeEqDist()+" (avec un coefiscient de "+opt.getPourcentageDistance()+" pour la distance et de "+(100-opt.getPourcentageDistance())+" pour l'equilibre) \n";
+		a = a + "\nEquilibre des poules:\t" + getEquilibreDesPoules()+" (note = "+ noteEquilibre +")\n" ;
+		a = a + "Distance totale parcourue:\t" +getDistanceTotale()+" (note = "+ noteDistance +")\nDistance moyenne par equipe parcourue : "+getDistanceMoyenne()+"\n";
+		if (opt.getEvaluation() == 2) {
+			a = a + "Moyenne pondérée de l'equilibre et de la distance ramenées sur 100 : "+getNoteMoyennePondereeEqDist()+" (avec un coefiscient de "+opt.getPourcentageDistance()+" pour la distance et de "+(100-opt.getPourcentageDistance())+" pour l'equilibre) \n";
+		}
 		return a;
 	}
 	
