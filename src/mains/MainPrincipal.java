@@ -56,8 +56,8 @@ public class MainPrincipal {
 			
 			//Algo Génétique 
 			for (int i = 0 ; i< o.getNbGen() ; i++) {
-				p.evaluation();
 				p.selectionAndMutation(mat,o);
+				p.evaluation();
 				if (i == (int)o.getNbGen()/2) {
 					writer.write(i+"ème Génération\n\n");
 					writer.write("Championnat 1 : \n---------------\n");
@@ -70,7 +70,6 @@ public class MainPrincipal {
 					writer.write( p.getChampionnat(o.getNbIndiv()-1).toString()); 
 				}
 			}
-			p.evaluation();
 
 
 			writer.write("\n===============================================================================\n");
