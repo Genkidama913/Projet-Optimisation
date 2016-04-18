@@ -7,8 +7,8 @@ import matrice.Matrice;
 import parametrage.Options;
 
 /**
- * CampionnatSimple est une classe qui implémente l'interface Championnat.
- * Un championnat à 18 équipes réparties en deux poules de 9 et jouant une fois chaque adversaire de la poule.
+ * ChampionnatSimple est une classe qui implemente l'interface Championnat.
+ * Un championnat a 18 equipes reparties en deux poules de 9 et jouant une fois chaque adversaire de la poule en aller-retour.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -24,7 +24,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	private double noteMoyennePondereeEqDist;
 	
 	/**
-	 * Creer un championnat simple à partir d'un tableau donné en paramètre.
+	 * Creer un championnat simple a partir d'un tableau donne en parametre.
 	 * @param Eq12 [18]
 	 * @param matrice des distances
 	 * @param les options du fichier de parametrage
@@ -62,7 +62,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 
 	/**
-	 * Creer un championnat simple aléatoire.
+	 * Creer un championnat simple aleatoire.
 	 * @param matrice des distances
 	 * @param les options du fichier de parametrage
 	 * @return Un Championnat complexe
@@ -100,7 +100,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 	
 	/**
-	 * Renvoie la distance ramenée sur 100. 
+	 * Renvoie la distance ramenee sur 100. 
 	 * Le calcul est : distanceTotale * 100 / 36000. (36000 est environ la distance maximale)
 	 * @return NoteDistance
 	 */
@@ -109,7 +109,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 	
 	/**
-	 * Renvoie l'equilibre des poules ramenée sur 100.
+	 * Renvoie l'equilibre des poules ramenee sur 100.
 	 * Le calcul est : equilibre * 100 / 81. (81 est l'equilibre des poules maximal)
 	 * @return NoteEquilibre
 	 */
@@ -118,8 +118,8 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 	
 	/**
-	 * Renvoie la moyenne pondérée de la note d'équilibre et de la note de distance.
-	 * Le coeficient est a gerer dans le fichier de parametrage par l'utilisateur.
+	 * Renvoie la moyenne ponderee de la note d'equilibre et de la note de distance.
+	 * Le coefficient est a gerer dans le fichier de parametrage par l'utilisateur.
 	 * @return noteMoyennePondereeEqDist
 	 */
 	public double getNoteMoyennePondereeEqDist() {
@@ -135,7 +135,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 	
 	/**
-	 * Renvoie la distance totale parcourue divisée par le nombre s'equipe.
+	 * Renvoie la distance totale parcourue divisee par le nombre d'equipe.
 	 * @return distanceMoyenne
 	 */
 	public double getDistanceMoyenne() {
@@ -144,7 +144,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	
 	/**
 	 * Renvoie l'equilibre des poules. 
-	 * L'equilibre est la différence de classement de chaque rang de chaque poule apres l'avoir classée.
+	 * L'equilibre est la difference de classement de chaque rang de chaque poule apres l'avoir classee.
 	 * @return equilibreDesPoule
 	 */
 	public double getEquilibreDesPoules() {
@@ -173,7 +173,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 
 	/**
-	 * Renvoie une présentation des poules avec la disatnce et l'equilibre des poules.
+	 * Renvoie une presentation des poules avec la distance et l'equilibre des poules.
 	 * @return equilibreDesPoule
 	 */
 	public String toString () {
@@ -195,7 +195,7 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 	
 	/**
-	 * Renvoie une présentation des poules avec les notes ramenées sur 100.
+	 * Renvoie une presentation des poules avec les notes ramenees sur 100.
 	 * @return equilibreDesPoule
 	 */
 	public String toString2 () {
@@ -216,8 +216,8 @@ public class ChampionnatSimple implements Comparable<ChampionnatSimple>, Champio
 	}
 
 	/**
-	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne pondérée.
-	 * La comparison est donnée dans le fichier d'options données.
+	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne ponderee.
+	 * La comparaison est donnee dans le fichier d'options donnees.
 	 * @param ChampionnatSimple 
 	 * @return la comparaison des deux championnat
 	 */

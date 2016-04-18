@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 /**
- * Options est une classe regroupant les options renseignées dans le fichier de parametrage.
+ * Options est une classe regroupant les options renseignees dans le fichier de parametrage.
  * @author Alexandre Enouf
  * @version 1.0
  */
@@ -17,15 +17,15 @@ public class Options {
 	private int pourcentageSelection;
 	private int pourcentageMutation;
 	/**
-	 * Creer une instance d'options a partir d'fichier de parametres. 
+	 * Creer une instance d'options a partir d'un fichier de parametres. 
 	 * Options prises en compte :
 	 * - type de Championnat (0 pour des poules simples, 1 pour des poules complexes)
-	 * - nombre de generations pour l'algorithme génétique
+	 * - nombre de generations pour l'algorithme genetique
 	 * - nombre de championnats par populations
 	 * - type d'evaluation (0 pour evaluet la distance, 1 l'equilibre des poules et 2 pour une evaluation par moyenne ponderee)
-	 * - pourcentage de la distance lors d'une evaluation par moyenne ponderee (100 - pourcntage distance pour l'equilibre des poules)
-	 * - pourcentage des meilleurs elements gardés apres chaque evaluation
-	 * - pourcentage d'element à muter
+	 * - pourcentage de la distance lors d'une evaluation par moyenne ponderee (100 - pourcentage distance pour l'equilibre des poules)
+	 * - pourcentage des meilleurs elements gardes apres chaque evaluation
+	 * - pourcentage d'element a muter
 	 * @param Eq12 [12]
 	 * @param matrice des distances
 	 * @param les options du fichier de parametrage
@@ -70,8 +70,8 @@ public class Options {
 	}
 
 	/**
-	 * Retourne le nombre de génération a faire. O pour des poules simples, 1 pour des poules complexes.
-	 * @return le nombre de générations.
+	 * Retourne le nombre de generation a faire. O pour des poules simples, 1 pour des poules complexes.
+	 * @return le nombre de generations.
 	 */
 	public int getNbGen() {
 		return nbGen;
@@ -94,7 +94,7 @@ public class Options {
 	}
 
 	/**
-	 * Retourne le coeficient de la distance pour la moyenne ponderee .
+	 * Retourne le coeficient de la distance pour la moyenne ponderee.
 	 * @return ceoficient de la distance.
 	 */
 	public int getPourcentageDistance() {
