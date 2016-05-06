@@ -19,8 +19,8 @@ public class PopulationSimple implements Population {
 
 	private ArrayList<ChampionnatSimple> pop;
 	private int nbIndiv;
-	int nbSel = 35 * nbIndiv; 
-	int nbMut = 33 * nbIndiv;
+	private int nbSel;
+	private int nbMut; 
 	
 	/**
 	 * Creer une population complexe a partir des donnees renseignees dans le fichier de parametrage.
@@ -29,10 +29,13 @@ public class PopulationSimple implements Population {
 	 */
 	public PopulationSimple (Matrice mat, Options o) {
 		this.nbIndiv = o.getNbIndiv();
+		nbSel = 35 * nbIndiv / 100; 
+		nbMut = 33 * nbIndiv / 100;
 		pop = new ArrayList<ChampionnatSimple> (); 
 		for ( int i = 0 ; i < o.getNbIndiv() ; i ++ ) {
 			pop.add(new ChampionnatSimple (mat,o));
 		}
+		
 	}
 
 	/**

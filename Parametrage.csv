@@ -1,5 +1,5 @@
-typeChampionnat;0
-nbGen;500
-nbIndiv;1000
-evaluation;0
-pourcentageDistance;30
+typeChampionnat;1
+nbGen;100
+nbIndiv;100
+evaluation;2
+pourcentageDistance;50

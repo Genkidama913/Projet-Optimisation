@@ -29,18 +29,18 @@ public class MainPrincipal {
 		Options o = new Options();
 		Population p ;
 
-		//Trirage de la population
-		if (o.getTypeChampionnat() == 0 ) {
-			p = new PopulationSimple (mat,o);
-		} else {
-			p = new PopulationComplexe (mat,o);
-		}
-
-		p.evaluation();
-
 		// Ecriture des resultats dans le fichier
 		try {
 
+			//Trirage de la population
+			if (o.getTypeChampionnat() == 0 ) {
+				p = new PopulationSimple (mat,o);
+			} else {
+				p = new PopulationComplexe (mat,o);
+			}
+
+			p.evaluation();
+			
 			BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Resultats/Resultats_"+LocalDateTime.now()+".txt")));
 			// normalement si le fichier n'existe pas, il est crée à la racine du projet
 			writer.write(o.toString());
