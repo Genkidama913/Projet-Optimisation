@@ -14,8 +14,6 @@ public class Options {
 	private int nbIndiv; //nb d'individus dans une population
 	private int evaluation; //0 -> distance, 1 -> equilibre, 2 -> mixte
 	private int pourcentageDistance; // Si evaluation mixte
-	private int pourcentageSelection;
-	private int pourcentageMutation;
 	/**
 	 * Creer une instance d'options a partir d'un fichier de parametres. 
 	 * Options prises en compte :
@@ -51,12 +49,6 @@ public class Options {
 		ligne = br.readLine();
 		line = ligne.split(";");
 		pourcentageDistance=Integer.parseInt(line[1]); // Si evaluation mixte
-		ligne = br.readLine();
-		line = ligne.split(";");
-		pourcentageSelection = Integer.parseInt(line[1]);
-		ligne = br.readLine();
-		line = ligne.split(";");
-		pourcentageMutation = Integer.parseInt(line[1]);
 		
 		br.close();
 	}
@@ -100,22 +92,6 @@ public class Options {
 	public int getPourcentageDistance() {
 		return pourcentageDistance;
 	}
-
-	/**
-	 * Retourne le pourcentage de meilleurs element a garder par evaluation de la populations.
-	 * @return pourcentage de meilleurs elements.
-	 */
-	public int getPourcentageSelection(){
-		return pourcentageSelection;
-	}
-	
-	/**
-	 * Retourne le pourcentage de d'element a muter par populations.
-	 * @return pourcentage de mutation.
-	 */
-	public int getPourcentageMutation(){
-		return pourcentageMutation;
-	}
 	
 	public String toString () {
 		String ret = "===============================================================================\n";
@@ -126,8 +102,8 @@ public class Options {
 		ret = ret + "Nombre d'individus:\t"+getNbIndiv()+"\n";
 		ret = ret + "Type d'évaluation:\t"+getEvaluation()+"\n";
 		ret = ret + "Pourcentage de la distance dans l'evaluation:\t"+getPourcentageDistance()+"\n";
-		ret = ret + "Pourcentage des meilleurs éléments gardés dans une population lors de la creation d'une nouvelle génération:\t"+getPourcentageSelection()+"\n";
-		ret = ret + "Pourcentage du nombre d'éléments mutés dans une population lors de la creation d'une nouvelle génération:\t"+getPourcentageMutation()+"\n";
+		ret = ret + "Pourcentage des meilleurs éléments sélectionnés et gardés:\t35 (fixe)\n";
+		ret = ret + "Pourcentage du nombre de mutations dans une population lors de la creation d'une nouvelle génération:\t33 (fixe)\n";
 		ret = ret + "===============================================================================\n";
 		return ret;
 	}
