@@ -31,7 +31,7 @@ public class MutationSimple {
 	}
 
 	/**
-	 * Cree un nouveau championnat simple a partir de celui donné en parametre en effectuant un nombre donne de mutations simples aleaoires.
+	 * Cree un nouveau championnat simple a partir de celui donne en parametre en effectuant un nombre donne de mutations simples aleaoires.
 	 * @parem Un nombre de mutations a effectuer
 	 * @param championnat simple
 	 * @param matrice

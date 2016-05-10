@@ -14,7 +14,7 @@ import parametrage.Options;
 public class MutationComplexe {
 
 	/**
-	 * Cree un nouveau championnat complexe a partir de celui donné en parametre en changeant une equipe entre deux groupes éloignés.
+	 * Cree un nouveau championnat complexe a partir de celui donne en parametre en changeant une equipe entre deux groupes eloignes.
 	 * @param championnat complexe
 	 * @param matrice
 	 * @param options
@@ -31,7 +31,7 @@ public class MutationComplexe {
 	}
 
 	/**
-	 * Cree un nouveau championnat complexe a partir de celui donné en parametre en changeant une equipe entre deux groupes proches.
+	 * Cree un nouveau championnat complexe a partir de celui donne en parametre en changeant une equipe entre deux groupes proches.
 	 * @param championnat complexe
 	 * @param matrice
 	 * @param options
@@ -56,8 +56,8 @@ public class MutationComplexe {
 	}
 
 	/**
-	 * Crée un nouveau championnat complexe a partir de celui donné en parametre en effectuant entre 1 et 5 mutation(s).
-	 * Chaque mutation est aleatoirement une mutation proche ou une mutation éloignée.
+	 * Cree un nouveau championnat complexe a partir de celui donne en parametre en effectuant entre 1 et 5 mutation(s).
+	 * Chaque mutation est aleatoirement une mutation proche ou une mutation eloignee.
 	 * @param championnat complexe
 	 * @param matrice
 	 * @param options

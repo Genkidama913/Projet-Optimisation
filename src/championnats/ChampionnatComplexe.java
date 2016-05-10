@@ -9,7 +9,7 @@ import parametrage.Options;
 /**
  * ChampionnatComplexe est une classe qui implemente l'interface Championnat.
  * Un championnat a 12 equipes dont les equipes sont repartis en 2 groupes de 6 et 2 sous-groupes de 3 au sein de chaque groupe de 6.
- * Les equipes se deplacant 2 fois chez chaque adversaire du sous­groupe, 1 fois chez chaque autre adversaires du groupe et 1 fois chez 3 des 6 adversaires de l'autre groupe.
+ * Les equipes se deplacant 2 fois chez chaque adversaire du sous groupe, 1 fois chez chaque autre adversaires du groupe et 1 fois chez 3 des 6 adversaires de l'autre groupe.
  * 
  * @author Alexandre Enouf
  * @version 1.0
@@ -282,7 +282,7 @@ public class ChampionnatComplexe implements Comparable<ChampionnatComplexe>, Cha
 	/**
 	 * Compare deux championnats sur leur notes. L'evaluation est soit sur la distance, ou l'equilibre des poules ou la moyenne ponderee.
 	 * La comparaison est donnee dans le fichier d'options donnees.
-	 * @param ChampionnatComplexe 
+	 * @param o Championnat complexe
 	 * @return la comparaison des deux championnats
 	 */
 	public int compareTo(ChampionnatComplexe o) {

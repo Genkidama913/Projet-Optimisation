@@ -18,8 +18,8 @@ public class Matrice {
 	private int taille = 18;
 	
 	/**
-	 * Crée une matrice de double en lisant dans le fichier csv de matrice.
-	 * @return Une matrice de double créée a partir du fichier csv.
+	 * Cree une matrice de double en lisant dans le fichier csv de matrice.
+	 * @return Une matrice de double creee a partir du fichier csv.
 	 */
 	public Matrice () throws NumberFormatException, IOException {
 		
@@ -46,8 +46,8 @@ public class Matrice {
 	
 	/**
 	 * Retourne le contenu de matrice [i][j].
-	 * @param indice i
-	 * @param indice j
+	 * @param i
+	 * @param j
 	 * @return contenu de matrice [i][j].
 	 */
 	public double getDistanceBetween(int i, int j) {
